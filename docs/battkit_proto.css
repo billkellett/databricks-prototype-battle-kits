@@ -1,0 +1,60 @@
+/* example of css comment */
+html {
+    font-size: 100%; 
+  }
+
+  body {
+    font-size: 1rem;
+  }
+  
+  h1 {
+    color:black;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 24
+  }
+  
+  h2 {
+    color: black;
+    text-align: left;
+    font-family: verdana;
+    font-size: 20;
+  }
+
+  p {
+    color: black;
+    text-align: left;
+    font-family: Verdana;
+    font-size: 12;
+  }
+
+  /* Used for element labels */
+  labelfont {
+    color: black;
+    text-align: left;
+    font-family: Verdana;
+    font-size: 1rem;
+  }
+
+  /* This is the div for Prospect/Oppty name info */
+  div.oppty {
+    max-width: 500px;
+    background-color: lightgray;
+    border: 1px solid black
+  }
+
+  /* This is the div for Vertical/Sub-Vertical/Use Case info */
+  div.vertical {
+    max-width: 500px;
+    background-color: lightgray;
+    border: 1px solid black
+  }
+
+  /* This is the div that holds the Log Window and its related Radio Buttons */
+  div.logger {
+    position:absolute;
+    top: 159px;
+    left: 750px;
+    width: 1090px;
+    border: 1px solid #d3d3d3;
+  }

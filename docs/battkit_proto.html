@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="battkit_proto.css">
+    <meta charset="UTF-8"><!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->   
+    <title>Battle Kits Prototype</title>   
+  </head>
+    
+  <body>
+    <h1>Battle Kits Prototype Version 1.0</h1>
+
+    <div class="oppty">
+      <p><b>Step 1: Name your Battle Kit</b></p>
+      <p>Enter Prospect Name: <input type="text" id="prospect_name"></p>
+      <p>Enter Opportunity Name: <input type="text" id="opportunity_name"></p>
+    </div>
+
+    <br>
+
+    <div class="vertical">
+      <p><b>Step 2: Select Vertical, Sub-Vertical and Use Case</b></p>
+      <p>Vertical:
+        <select name="vertical" id="vertical" onchange="populateSubVerticalDropDown(this, getElementById('ddSubVertical'))">
+          <option value=""></option>
+          <option value="energy">Energy and Utilities</option>
+          <option value="finsrv">Financial Services</option>
+          <option value="health">Healthcare and Life Sciences</option>
+          <option value="mfg">Manufacturing</option>
+          <option value="media">Media and Entertainment</option>
+          <option value="other">Other or Unknown</option>
+          <option value="pubsec">Public Sector</option>
+          <option value="retail">Retail and Consumer Goods</option>
+        </select>
+      </p>
+      <p>Sub-Vertical:
+        <select name="ddSubVertical" id="ddSubVertical" )"></select>
+      </p>
+    </div>
+    
+    
+    <div>
+      <h1>Battle Kits Prototype Version 1.0 </h1>
+      <p>Enter Prospect:
+        <input type="text" id="executive_ip_address">
+      </p>
+      <p>
+        <button id="btnReset" onclick="resetAll()">Unset all turnouts</button>
+      </p>
+    </div>
+
+    
+    <div class="logger">
+      <p>&nbsp;Select logging level:</p>
+        <input type="radio" id="log_err" name="log_level" value="ERROR" checked onclick="saveLogLevel('1')">
+        <label for="log_err"><labelFont>ERROR</labelFont></label>
+        <input type="radio" id="log_warn" name="log_level" value="WARN" onclick="saveLogLevel('2')">
+        <label for="log_warn"><labelFont>WARN</labelFont></label> 
+        <input type="radio" id="log_info" name="log_level" value="INFO" onclick="saveLogLevel('3')">
+        <label for="log_info"><labelFont>INFO</labelFont></label>
+        <input type="radio" id="log_debug" name="log_level" value="DEBUG" onclick="saveLogLevel('4')">
+        <label for="log_debug"><labelFont>DEBUG</labelFont></label>
+      </p>
+
+      &nbsp;<textarea name="logText" id="logTextId" rows="10" cols="150" readonly="true" placeholder="System messages will be displayed here."></textarea>
+      <br>&nbsp;
+      <button id="btnClear" onclick="clearLog()">Clear log display</button>
+      <button id="btnDrain" onclick="drainLog()">Drain pending log messages</button>
+      <br>&nbsp;
+    </div>
+
+    
+    <script>
+      // Model this from https://stackoverflow.com/questions/5686735/populate-one-dropdown-based-on-selection-in-another
+      function populateSubVerticalDropDown(ddVertical, ddSubVertical) {
+        var energySubs = ['All Sub-Verticals'];
+        var finsrvSubs = ['All Sub-Verticals', 'Hyper Personalization', 'Compliance & Risk', 'Fraud Detection', 'Investing Analytics', 'ESG Intelligence'];
+        var healthSubs = ['All Sub-Verticals', 'Real World Evidence', 'Personalized Medicine', 'Interoperability & Patient Evidence'];
+        var mfgSubs = ['All Sub-Verticals', 'Equipment as a Service', 'Sustainability', 'Digital Twin'];
+        var mediaSubs = ['All Sub-Verticals', 'Audience Experience', 'Advertising Optimization'];
+        var otherSubs = ['All Sub-Verticals'];
+        var pubsecSubs = ['All Sub-Verticals', 'Federal Cybersecurity', 'Government Modernization', 'FSI Engagement'];
+        var retailSubs = ['All Sub-Verticals', 'Consumer 360', 'Inventory & Demand Management', 'Control Tower'];
+
+        switch(ddVertical.value) {
+          case 'energy':
+            ddSubVertical.options.length = 0;
+            for (i = 0; i < energySubs.length; i++){
+              createOption(ddSubVertical, energySubs[i], energySubs[i]) 
+            }
+            break;
+
+          case 'finsrv':
+          ddSubVertical.options.length = 0;
+            for (i = 0; i < finsrvSubs.length; i++){
+              createOption(ddSubVertical, finsrvSubs[i], finsrvSubs[i])
+            }
+            break;
+
+          case 'health':
+          ddSubVertical.options.length = 0;
+            for (i = 0; i < healthSubs.length; i++){
+              createOption(ddSubVertical, healthSubs[i], healthSubs[i])
+            }
+            break;
+
+          case 'mfg':
+          ddSubVertical.options.length = 0;
+            for (i = 0; i < mfgSubs.length; i++){
+              createOption(ddSubVertical, mfgSubs[i], mfgSubs[i])
+            }
+            break;
+
+          case 'media':
+          ddSubVertical.options.length = 0;
+            for (i = 0; i < mediaSubs.length; i++){
+              createOption(ddSubVertical, mediaSubs[i], mediaSubs[i])
+            }
+            break;
+
+          case 'other':
+          ddSubVertical.options.length = 0;
+            for (i = 0; i < otherSubs.length; i++){
+              createOption(ddSubVertical, otherSubs[i], otherSubs[i])
+            }
+            break;
+
+          case 'pubsec':
+          ddSubVertical.options.length = 0;
+            for (i = 0; i < pubsecSubs.length; i++){
+              createOption(ddSubVertical, pubsecSubs[i], pubsecSubs[i])
+            }
+            break;
+
+          case 'retail':
+          ddSubVertical.options.length = 0;
+            for (i = 0; i < retailSubs.length; i++){
+              createOption(ddSubVertical, retailSubs[i], retailSubs[i])
+            }
+            break;
+        }
+
+      }
+
+      function createOption(dd, text, value) {
+        var opt = document.createElement('option');
+        opt.value = value;
+        opt.text = text;
+        dd.options.add(opt);
+      }
+
+
+      // Clear the textarea that displays log messages
+      function clearLog() {
+        logTextId.value = "";
+      }
+
+      // Retrieve any messages that Executive may have logged, but are not yet displayed in the browser
+      // This is necessary because the (slow) serial port may send messages that were not available when the http request returned.
+      function drainLog() {
+        try {
+          var drainReq = new XMLHttpRequest();
+          drainReq.addEventListener("load", reqListener);
+          command = "http://" + executive_ip_address.value.trim() + ":8089/?bom=888&system=0&unit=0&command=0&command_param=0&log_level=" + logLevel + "&eom=999";
+          drainReq.open("GET", command);
+          drainReq.send();
+        }
+        catch(err) {
+          var errMsg = "\n" + new Date().toJSON() + ",ERROR,CLIENT,drainLog() Browser Exception: '" + err + "'";
+          logTextId.value += errMsg;
+          // scroll to the bottom of the textarea
+          document.getElementById("logTextId").scrollTop = document.getElementById("logTextId").scrollHeight;
+        }
+      }
+
+      // Log level is set via radio buttons, but we default to 1 (ERROR-level)
+      var logLevel = 1;
+
+      // Save desired logging level
+      function saveLogLevel(p_logLevel) {
+        logLevel = p_logLevel
+      }
+
+      // Display messages returned from the Executive
+      function reqListener() {
+        // log responses to textarea on browser page.
+        //console.log(this.responseText);
+        logTextId.value += this.responseText;
+        // scroll to the bottom of the textarea
+        document.getElementById("logTextId").scrollTop = document.getElementById("logTextId").scrollHeight;
+      }
+
+    </script> 
+
+  </body>
+</html>
