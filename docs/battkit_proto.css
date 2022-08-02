@@ -50,6 +50,12 @@ html {
     border: 1px solid black
   }
 
+  div.cloud {
+    max-width: 500px;
+    background-color: lightgray;
+    border: 1px solid black
+  }    
+
   /* This is the div that holds the Log Window and its related Radio Buttons */
   div.logger {
     position:absolute;

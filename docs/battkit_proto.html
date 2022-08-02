@@ -18,10 +18,11 @@
     <br>
 
     <div class="vertical">
-      <p><b>Step 2: Select Vertical, Sub-Vertical and Use Case</b></p>
+      <p><b>Step 2: Select Vertical and Use Case</b></p>
       <p>Vertical:
-        <select name="vertical" id="vertical" onchange="populateSubVerticalDropDown(this, getElementById('ddSubVertical'))">
+        <select name="vertical" id="vertical" onchange="populateUseCaseDropDown(this, getElementById('ddUseCase'))">
           <option value=""></option>
+          <option value="allverticals">All Verticals</option>
           <option value="energy">Energy and Utilities</option>
           <option value="finsrv">Financial Services</option>
           <option value="health">Healthcare and Life Sciences</option>
@@ -32,8 +33,26 @@
           <option value="retail">Retail and Consumer Goods</option>
         </select>
       </p>
-      <p>Sub-Vertical:
-        <select name="ddSubVertical" id="ddSubVertical" )"></select>
+      <p>Use Case:
+        <select name="ddUseCase" id="ddUseCase" )"></select>
+      </p>
+    </div>
+
+    <br>
+
+    <div class="cloud">
+      <p><b>Step 3: Select All Relevant Cloud Providers</b></p>
+      <p>
+        <input type="checkbox" id="gcp" name="gcp" value="gcp">
+        <label for="gcp">GCP</label><br>
+      </p>
+      <p>
+        <input type="checkbox" id="aws" name="aws" value="aws">
+        <label for="aws">AWS</label><br>
+      </p>
+      <p>
+        <input type="checkbox" id="azure" name="azure" value="azure">
+        <label for="azure">Azure</label><br>
       </p>
     </div>
     
@@ -71,70 +90,78 @@
     
     <script>
       // Model this from https://stackoverflow.com/questions/5686735/populate-one-dropdown-based-on-selection-in-another
-      function populateSubVerticalDropDown(ddVertical, ddSubVertical) {
-        var energySubs = ['All Sub-Verticals'];
-        var finsrvSubs = ['All Sub-Verticals', 'Hyper Personalization', 'Compliance & Risk', 'Fraud Detection', 'Investing Analytics', 'ESG Intelligence'];
-        var healthSubs = ['All Sub-Verticals', 'Real World Evidence', 'Personalized Medicine', 'Interoperability & Patient Evidence'];
-        var mfgSubs = ['All Sub-Verticals', 'Equipment as a Service', 'Sustainability', 'Digital Twin'];
-        var mediaSubs = ['All Sub-Verticals', 'Audience Experience', 'Advertising Optimization'];
-        var otherSubs = ['All Sub-Verticals'];
-        var pubsecSubs = ['All Sub-Verticals', 'Federal Cybersecurity', 'Government Modernization', 'FSI Engagement'];
-        var retailSubs = ['All Sub-Verticals', 'Consumer 360', 'Inventory & Demand Management', 'Control Tower'];
+      function populateUseCaseDropDown(ddVertical, ddUseCase) {
+        var allverticalUses = ['All Use Cases']
+        var energyUses = ['All Use Cases'];
+        var finsrvUses = ['All Use Cases', 'Hyper Personalization', 'Compliance & Risk', 'Fraud Detection', 'Investing Analytics', 'ESG Intelligence'];
+        var healthUses = ['All Use Cases', 'Real World Evidence', 'Personalized Medicine', 'Interoperability & Patient Evidence'];
+        var mfgUses = ['All Use Cases', 'Equipment as a Service', 'Sustainability', 'Digital Twin'];
+        var mediaUses = ['All Use Cases', 'Audience Experience', 'Advertising Optimization'];
+        var otherUses = ['All Use Cases'];
+        var pubsecUses = ['All Use Cases', 'Federal Cybersecurity', 'Government Modernization', 'FSI Engagement'];
+        var retailUses = ['All Use Cases', 'Consumer 360', 'Inventory & Demand Management', 'Control Tower'];
 
         switch(ddVertical.value) {
+          case 'allverticals':
+            ddUseCase.options.length = 0;
+            for (i=0; i < allverticalUses.length; i++) {
+              createOption(ddUseCase, allverticalUses[i])
+            }
+            break;
+
           case 'energy':
-            ddSubVertical.options.length = 0;
-            for (i = 0; i < energySubs.length; i++){
-              createOption(ddSubVertical, energySubs[i], energySubs[i]) 
+            ddUseCase.options.length = 0;
+            for (i = 0; i < energyUses.length; i++) {
+              createOption(ddUseCase, energyUses[i], energyUses[i]) 
             }
             break;
 
           case 'finsrv':
-          ddSubVertical.options.length = 0;
-            for (i = 0; i < finsrvSubs.length; i++){
-              createOption(ddSubVertical, finsrvSubs[i], finsrvSubs[i])
+          ddUseCase.options.length = 0;
+            for (i = 0; i < finsrvUses.length; i++){
+              createOption(ddUseCase, finsrvUses[i], finsrvUses[i])
             }
             break;
 
           case 'health':
-          ddSubVertical.options.length = 0;
-            for (i = 0; i < healthSubs.length; i++){
-              createOption(ddSubVertical, healthSubs[i], healthSubs[i])
+          ddUseCase.options.length = 0;
+            for (i = 0; i < healthUses.length; i++){
+              createOption(ddUseCase, healthUses[i], healthUses[i])
             }
             break;
 
           case 'mfg':
-          ddSubVertical.options.length = 0;
-            for (i = 0; i < mfgSubs.length; i++){
-              createOption(ddSubVertical, mfgSubs[i], mfgSubs[i])
+          ddUseCase.options.length = 0;
+            for (i = 0; i < mfgUses.length; i++){
+              createOption(ddUseCase, mfgUses[i], mfgUses[i])
             }
             break;
 
           case 'media':
-          ddSubVertical.options.length = 0;
-            for (i = 0; i < mediaSubs.length; i++){
-              createOption(ddSubVertical, mediaSubs[i], mediaSubs[i])
+          ddUseCase.options.length = 0;
+            for (i = 0; i < mediaUses.length; i++){
+              createOption(ddUseCase, mediaUses[i], mediaUses[i])
             }
             break;
 
           case 'other':
-          ddSubVertical.options.length = 0;
-            for (i = 0; i < otherSubs.length; i++){
-              createOption(ddSubVertical, otherSubs[i], otherSubs[i])
+          ddUseCase.options.length = 0;
+            for (i = 0; i < otherUses.length; i++){
+              createOption(ddUseCase, otherUses[i], otherUses[i])
             }
             break;
 
           case 'pubsec':
-          ddSubVertical.options.length = 0;
-            for (i = 0; i < pubsecSubs.length; i++){
-              createOption(ddSubVertical, pubsecSubs[i], pubsecSubs[i])
+          ddUseCase.options.length = 0;
+            for (i = 0; i < pubsecUses.length; i++){
+              createOption(ddUseCase, pubsecUses[i], pubsecUses[i])
             }
             break;
 
           case 'retail':
-          ddSubVertical.options.length = 0;
-            for (i = 0; i < retailSubs.length; i++){
-              createOption(ddSubVertical, retailSubs[i], retailSubs[i])
+          ddUseCase.options.length = 0;
+            for (i = 0; i < retailUses.length; i++){
+              createOption(ddUseCase, retailUses[i], retailUses[i])
             }
             break;
         }
