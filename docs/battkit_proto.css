@@ -50,6 +50,7 @@ html {
     border: 1px solid black
   }
 
+  /* This is the div for cloud providers */
   div.cloud {
     max-width: 500px;
     background-color: lightgray;

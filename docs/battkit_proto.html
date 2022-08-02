@@ -55,38 +55,31 @@
         <label for="azure">Azure</label><br>
       </p>
     </div>
-    
-    
-    <div>
-      <h1>Battle Kits Prototype Version 1.0 </h1>
-      <p>Enter Prospect:
-        <input type="text" id="executive_ip_address">
+
+    <br>;
+ 
+    <div class="competitors">
+      <p><b>Step 4: Select All Relevant Competitors</b></p>
+      <p>
+        <input type="checkbox" id="gcp" name="gcp" value="gcp">
+        <label for="gcp">GCP</label><br>
       </p>
       <p>
+        <input type="checkbox" id="aws" name="aws" value="aws">
+        <label for="aws">AWS</label><br>
+      </p>
+      <p>
+        <input type="checkbox" id="azure" name="azure" value="azure">
+        <label for="azure">Azure</label><br>
+      </p>
+    </div>    
+    
+    <br>;
+
+    <div>
         <button id="btnReset" onclick="resetAll()">Unset all turnouts</button>
       </p>
     </div>
-
-    
-    <div class="logger">
-      <p>&nbsp;Select logging level:</p>
-        <input type="radio" id="log_err" name="log_level" value="ERROR" checked onclick="saveLogLevel('1')">
-        <label for="log_err"><labelFont>ERROR</labelFont></label>
-        <input type="radio" id="log_warn" name="log_level" value="WARN" onclick="saveLogLevel('2')">
-        <label for="log_warn"><labelFont>WARN</labelFont></label> 
-        <input type="radio" id="log_info" name="log_level" value="INFO" onclick="saveLogLevel('3')">
-        <label for="log_info"><labelFont>INFO</labelFont></label>
-        <input type="radio" id="log_debug" name="log_level" value="DEBUG" onclick="saveLogLevel('4')">
-        <label for="log_debug"><labelFont>DEBUG</labelFont></label>
-      </p>
-
-      &nbsp;<textarea name="logText" id="logTextId" rows="10" cols="150" readonly="true" placeholder="System messages will be displayed here."></textarea>
-      <br>&nbsp;
-      <button id="btnClear" onclick="clearLog()">Clear log display</button>
-      <button id="btnDrain" onclick="drainLog()">Drain pending log messages</button>
-      <br>&nbsp;
-    </div>
-
     
     <script>
       // Model this from https://stackoverflow.com/questions/5686735/populate-one-dropdown-based-on-selection-in-another
