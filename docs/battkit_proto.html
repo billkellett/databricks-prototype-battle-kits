@@ -1,215 +1,188 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="battkit_proto.js"></script>
     <link rel="stylesheet" type="text/css" href="battkit_proto.css">
     <meta charset="UTF-8"><!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->   
     <title>Battle Kits Prototype</title>   
   </head>
     
   <body>
-    <h1>Battle Kits Prototype Version 1.0</h1>
+    <div class="container">
+      <div class="toppane">
+        <h1>Battle Kits Prototype Version 1.0</h1>
+      </div>
 
-    <div class="oppty">
-      <p><b>Step 1: Name your Battle Kit</b></p>
-      <p>Enter Prospect Name: <input type="text" id="prospect_name"></p>
-      <p>Enter Opportunity Name: <input type="text" id="opportunity_name"></p>
+      <div class="leftpane">
+        <div class="oppty">
+          <p><b>Step 1: Name your Battle Kit</b></p>
+          <p>Enter Prospect Name: <input type="text" id="prospect_name"></p>
+          <p>Enter Opportunity Name: <input type="text" id="opportunity_name"></p>
+        </div>
+
+        <br>
+
+        <div class="vertical">
+          <p><b>Step 2: Select Vertical and Use Case</b></p>
+          <p>Vertical:
+            <select name="vertical" id="vertical" onchange="populateUseCaseDropDown(this, getElementById('ddUseCase'))">
+              <option value=""></option>
+              <option value="allverticals">All Verticals</option>
+              <option value="energy">Energy and Utilities</option>
+              <option value="finsrv">Financial Services</option>
+              <option value="health">Healthcare and Life Sciences</option>
+              <option value="mfg">Manufacturing</option>
+              <option value="media">Media and Entertainment</option>
+              <option value="other">Other or Unknown</option>
+              <option value="pubsec">Public Sector</option>
+              <option value="retail">Retail and Consumer Goods</option>
+            </select>
+          </p>
+          <p>Use Case:
+            <select name="ddUseCase" id="ddUseCase" )"></select>
+          </p>
+        </div>
+
+        <br>
+
+        <div class="cloud">
+          <p><b>Step 3: Select All Relevant Cloud Providers</b></p>
+          <p>
+            <input type="checkbox" id="gcp" name="gcp" value="gcp">
+            <label for="gcp">GCP</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="aws" name="aws" value="aws">
+            <label for="aws">AWS</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="azure" name="azure" value="azure">
+            <label for="azure">Azure</label><br>
+          </p>
+        </div>
+      </div>
+  
+      <div class="centerpane">
+        <div class="competitors">
+          <p><b>Step 4: Select All Relevant Competitors</b></p>
+          <p>
+            <input type="checkbox" id="other" name="other" value="other">
+            <label for="other">Other or Unknown</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="amazon_emr" name="amazon_emr" value="amazon_emr">
+            <label for="amazon_emr">Amazon EMR</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="amazon_sagemaker" name="amazon_sagemaker" value="amazon_sagemaker">
+            <label for="amazon_sagemaker">Amazon SageMaker</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="amazon_redshift" name="amazon_redshift" value="amazon_redshift">
+            <label for="amazon_redshift">Amazon Redshift</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="azure_synapse" name="azure_synapse" value="azure_synapse">
+            <label for="azure_synapse">Azure Synapse</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="azure_machine_learning" name="azure_machine_learning" value="azure_machine_learning">
+            <label for="azure_machine_learning">Amazon Machine Learning</label><br>
+          </p>      
+          <p>
+            <input type="checkbox" id="microsoft_snowflake_surround" name="microsoft_snowflake_surround" value="microsoft_snowflake_surround">
+            <label for="microsoft_snowflake_surround">Microsoft Snowflake Surround</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="google_bigquery" name="google_bigquery" value="google_bigquery>
+            <label for="google_bigquery>Google BigQuery</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="google_cloud_dataproc" name="google_cloud_dataproc" value="google_cloud_dataproc">
+            <label for="google_cloud_dataproc">Google Cloud Dataproc</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="google_dataflow" name="google_dataflow" value="google_dataflow>
+            <label for="google_dataflow">Google Dataflow</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="snowflake" name="snowflake" value="snowflake">
+            <label for="snowflake">Snowflake</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="datarobot" name="datarobot" value="datarobot">
+            <label for="datarobot">DataRobot</label><br>
+          </p>      
+          <p>
+            <input type="checkbox" id="dataiku" name="dataiku" value="dataiku">
+            <label for="dataiku">Dataiku</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="qubole" name="qubole" value="qubole">
+            <label for="qubole">Qubole</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="sas" name="sas" value="sas">
+            <label for="sas">SAS</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="cloudera" name="cloudera" value="cloudera">
+            <label for="cloudera">Cloudera</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="edw_migration" name="edw_migration" value="edw_migration">
+            <label for="edw_migration">EDW Migration</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="spark_oss" name="spark_oss" value="spark_oss">
+            <label for="spark_oss">Spark OSS</label><br>
+          </p>      
+          <p>
+            <input type="checkbox" id="hudi" name="hudi" value="hudi">
+            <label for="hudi">Hudi</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="iceberg" name="iceberg" value="iceberg">
+            <label for="iceberg">Iceberg</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="palantir" name="palantir" value="palantir">
+            <label for="palantir">Palantir</label><br>
+          </p>
+          <p>
+            <input type="checkbox" id="c3_ai" name="c3_ai" value="c3_ai">
+            <label for="c3_ai">C3.ai</label><br>
+          </p>   
+          <p>
+            <input type="checkbox" id="starburst" name="starburst" value="starburst">
+            <label for="starburst">Starburst</label><br>
+          </p>    
+        </div>
+      </div>    
+
+      <div class="rightpane">
+        <div class="generate">
+          <p>
+            <b>Step 5: Generate your Battle Kit!</b>
+          </p>
+          <p>
+            <button id="btnGenerate" onclick="generateBattleKit()">Generate Battle Kit</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnReset" onclick="window.location.reload()">Reset</button>
+          </p>
+        </div>
+
+        <br>
+
+        <div class="battlekit_op" id="div_battlekit_op">
+          <p>
+            <b> Your Battle Kit</b>
+          </p>
+          <p id="product_links"></p>
+          <p id="cloud_links"></p>
+          <p id="compete_links"></p>
+        </div>
+      </div>
     </div>
-
-    <br>
-
-    <div class="vertical">
-      <p><b>Step 2: Select Vertical and Use Case</b></p>
-      <p>Vertical:
-        <select name="vertical" id="vertical" onchange="populateUseCaseDropDown(this, getElementById('ddUseCase'))">
-          <option value=""></option>
-          <option value="allverticals">All Verticals</option>
-          <option value="energy">Energy and Utilities</option>
-          <option value="finsrv">Financial Services</option>
-          <option value="health">Healthcare and Life Sciences</option>
-          <option value="mfg">Manufacturing</option>
-          <option value="media">Media and Entertainment</option>
-          <option value="other">Other or Unknown</option>
-          <option value="pubsec">Public Sector</option>
-          <option value="retail">Retail and Consumer Goods</option>
-        </select>
-      </p>
-      <p>Use Case:
-        <select name="ddUseCase" id="ddUseCase" )"></select>
-      </p>
-    </div>
-
-    <br>
-
-    <div class="cloud">
-      <p><b>Step 3: Select All Relevant Cloud Providers</b></p>
-      <p>
-        <input type="checkbox" id="gcp" name="gcp" value="gcp">
-        <label for="gcp">GCP</label><br>
-      </p>
-      <p>
-        <input type="checkbox" id="aws" name="aws" value="aws">
-        <label for="aws">AWS</label><br>
-      </p>
-      <p>
-        <input type="checkbox" id="azure" name="azure" value="azure">
-        <label for="azure">Azure</label><br>
-      </p>
-    </div>
-
-    <br>;
- 
-    <div class="competitors">
-      <p><b>Step 4: Select All Relevant Competitors</b></p>
-      <p>
-        <input type="checkbox" id="gcp" name="gcp" value="gcp">
-        <label for="gcp">GCP</label><br>
-      </p>
-      <p>
-        <input type="checkbox" id="aws" name="aws" value="aws">
-        <label for="aws">AWS</label><br>
-      </p>
-      <p>
-        <input type="checkbox" id="azure" name="azure" value="azure">
-        <label for="azure">Azure</label><br>
-      </p>
-    </div>    
-    
-    <br>;
-
-    <div>
-        <button id="btnReset" onclick="resetAll()">Unset all turnouts</button>
-      </p>
-    </div>
-    
-    <script>
-      // Model this from https://stackoverflow.com/questions/5686735/populate-one-dropdown-based-on-selection-in-another
-      function populateUseCaseDropDown(ddVertical, ddUseCase) {
-        var allverticalUses = ['All Use Cases']
-        var energyUses = ['All Use Cases'];
-        var finsrvUses = ['All Use Cases', 'Hyper Personalization', 'Compliance & Risk', 'Fraud Detection', 'Investing Analytics', 'ESG Intelligence'];
-        var healthUses = ['All Use Cases', 'Real World Evidence', 'Personalized Medicine', 'Interoperability & Patient Evidence'];
-        var mfgUses = ['All Use Cases', 'Equipment as a Service', 'Sustainability', 'Digital Twin'];
-        var mediaUses = ['All Use Cases', 'Audience Experience', 'Advertising Optimization'];
-        var otherUses = ['All Use Cases'];
-        var pubsecUses = ['All Use Cases', 'Federal Cybersecurity', 'Government Modernization', 'FSI Engagement'];
-        var retailUses = ['All Use Cases', 'Consumer 360', 'Inventory & Demand Management', 'Control Tower'];
-
-        switch(ddVertical.value) {
-          case 'allverticals':
-            ddUseCase.options.length = 0;
-            for (i=0; i < allverticalUses.length; i++) {
-              createOption(ddUseCase, allverticalUses[i])
-            }
-            break;
-
-          case 'energy':
-            ddUseCase.options.length = 0;
-            for (i = 0; i < energyUses.length; i++) {
-              createOption(ddUseCase, energyUses[i], energyUses[i]) 
-            }
-            break;
-
-          case 'finsrv':
-          ddUseCase.options.length = 0;
-            for (i = 0; i < finsrvUses.length; i++){
-              createOption(ddUseCase, finsrvUses[i], finsrvUses[i])
-            }
-            break;
-
-          case 'health':
-          ddUseCase.options.length = 0;
-            for (i = 0; i < healthUses.length; i++){
-              createOption(ddUseCase, healthUses[i], healthUses[i])
-            }
-            break;
-
-          case 'mfg':
-          ddUseCase.options.length = 0;
-            for (i = 0; i < mfgUses.length; i++){
-              createOption(ddUseCase, mfgUses[i], mfgUses[i])
-            }
-            break;
-
-          case 'media':
-          ddUseCase.options.length = 0;
-            for (i = 0; i < mediaUses.length; i++){
-              createOption(ddUseCase, mediaUses[i], mediaUses[i])
-            }
-            break;
-
-          case 'other':
-          ddUseCase.options.length = 0;
-            for (i = 0; i < otherUses.length; i++){
-              createOption(ddUseCase, otherUses[i], otherUses[i])
-            }
-            break;
-
-          case 'pubsec':
-          ddUseCase.options.length = 0;
-            for (i = 0; i < pubsecUses.length; i++){
-              createOption(ddUseCase, pubsecUses[i], pubsecUses[i])
-            }
-            break;
-
-          case 'retail':
-          ddUseCase.options.length = 0;
-            for (i = 0; i < retailUses.length; i++){
-              createOption(ddUseCase, retailUses[i], retailUses[i])
-            }
-            break;
-        }
-
-      }
-
-      function createOption(dd, text, value) {
-        var opt = document.createElement('option');
-        opt.value = value;
-        opt.text = text;
-        dd.options.add(opt);
-      }
-
-
-      // Clear the textarea that displays log messages
-      function clearLog() {
-        logTextId.value = "";
-      }
-
-      // Retrieve any messages that Executive may have logged, but are not yet displayed in the browser
-      // This is necessary because the (slow) serial port may send messages that were not available when the http request returned.
-      function drainLog() {
-        try {
-          var drainReq = new XMLHttpRequest();
-          drainReq.addEventListener("load", reqListener);
-          command = "http://" + executive_ip_address.value.trim() + ":8089/?bom=888&system=0&unit=0&command=0&command_param=0&log_level=" + logLevel + "&eom=999";
-          drainReq.open("GET", command);
-          drainReq.send();
-        }
-        catch(err) {
-          var errMsg = "\n" + new Date().toJSON() + ",ERROR,CLIENT,drainLog() Browser Exception: '" + err + "'";
-          logTextId.value += errMsg;
-          // scroll to the bottom of the textarea
-          document.getElementById("logTextId").scrollTop = document.getElementById("logTextId").scrollHeight;
-        }
-      }
-
-      // Log level is set via radio buttons, but we default to 1 (ERROR-level)
-      var logLevel = 1;
-
-      // Save desired logging level
-      function saveLogLevel(p_logLevel) {
-        logLevel = p_logLevel
-      }
-
-      // Display messages returned from the Executive
-      function reqListener() {
-        // log responses to textarea on browser page.
-        //console.log(this.responseText);
-        logTextId.value += this.responseText;
-        // scroll to the bottom of the textarea
-        document.getElementById("logTextId").scrollTop = document.getElementById("logTextId").scrollHeight;
-      }
-
-    </script> 
-
   </body>
 </html>
