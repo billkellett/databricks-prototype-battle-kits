@@ -4,7 +4,7 @@ html {
     height: 100%;
     margin: 0;
     font-size: 100%; 
-    background-color: lightblue;
+    background-color: darkslategrey;
   }
 
   body {
@@ -22,21 +22,21 @@ html {
   .leftpane {
     width: 33%;
     height: 100%;
-    margin: 10px;
+    margin-left: 20px;
     float: left;
   }
 
   .centerpane {
     width: 33%;
     height: 100%;
-    margin: 10px;
+    margin-left: 20px;
     float: left;
   }
 
   .rightpane {
     width: 25%;
     height: 100%;
-    margin: 10px;
+    margin-left: 20px;
     float: left;
   }
 
@@ -46,7 +46,7 @@ html {
   }
   
   h1 {
-    color:black;
+    color:whitesmoke;
     text-align: center;
     font-family: Verdana;
     font-size: 24
@@ -64,6 +64,7 @@ html {
     text-align: left;
     font-family: Verdana;
     font-size: 12;
+    margin-left: 10px
   }
 
   /* Used for element labels */
@@ -77,42 +78,42 @@ html {
   /* This is the div for Prospect/Oppty name info */
   div.oppty {
     max-width: 500px;
-    background-color: lightgray;
-    border: 1px solid black
+    background-color: whitesmoke;
+    border: 1px solid black;
   }
 
   /* This is the div for Vertical/Sub-Vertical/Use Case info */
   div.vertical {
     max-width: 500px;
-    background-color: lightgray;
+    background-color: whitesmoke;
     border: 1px solid black;
   }
 
   /* This is the div for cloud providers */
   div.cloud {
     max-width: 500px;
-    background-color: lightgray;
+    background-color: whitesmoke;
     border: 1px solid black
   }    
 
   /* This is the div for competitors */
   div.competitors {
     max-width: 500px;
-    background-color: lightgray;
+    background-color: whitesmoke;
     border: 1px solid black
   }   
 
   /* This is the div for generating battle kit */
   div.generate {
     max-width: 500px;
-    background-color: lightgray;
+    background-color: whitesmoke;
     border: 1px solid black
   }   
 
   /* This is the div for generating battle kit */
   div.battlekit_op {
     max-width: 500px;
-    background-color: lightgray;
+    background-color: whitesmoke;
     border: 1px solid black;
     visibility: hidden;
   }   
