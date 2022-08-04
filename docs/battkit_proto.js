@@ -101,7 +101,28 @@ paragraph.textContent += 'Product-related assets are ';
 paragraph.appendChild(prod_anchor);
 
 // Create text and link to cloud provider-related assets
-// First create <a> element
+//
+// First, build the URL you want for Wordpress, based on checked items on the page
+cloud_url = "https://home.databricks.com/frc/battle-kit-cloud-provider-content/?fr=";
+// Loop through the compete div and examine each checkbox to see if it has been selected.
+// If selected, add the appropriate tag to the query string.
+checkboxes = $(".cloudCkbox");
+// If multiple cloud checboxes are selected, we need to separate them with a "+" in the 
+// query string we are building
+needPlus = false;
+
+for (let i=0; i<checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+        if (needPlus) {
+            cloud_url += '+';  // or maybe should be a comma, check with Joel re custom OR query
+        }
+        cloud_url += "battkit-proto-";
+        cloud_url += checkboxes[i].value;
+        needPlus = true;
+    }
+}
+
+// Now create <a> element
     var cloud_anchor = document.createElement('a');
 // Now create a text node for the link
 var cloud_link = document.createTextNode("here");
@@ -109,7 +130,7 @@ var cloud_link = document.createTextNode("here");
 cloud_anchor.appendChild(cloud_link);
 // Set the anchor element properties
 cloud_anchor.title = "Cloud provider-related assets";
-cloud_anchor.href = "https://www.google.com";
+cloud_anchor.href = cloud_url;
 cloud_anchor.target = "_blank";
 // Now generate the contents of the cloud provider links paragraph
 var paragraph = document.getElementById("cloud_links");
