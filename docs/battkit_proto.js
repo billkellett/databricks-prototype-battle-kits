@@ -125,7 +125,7 @@ var compete_link = document.createTextNode("here");
 compete_anchor.appendChild(compete_link);
 // Set the anchor element properties
 compete_anchor.title = "Competition-related assets";
-compete_anchor.href = "https://www.databricks.com";
+compete_anchor.href = "https://home.databricks.com/frc/fr-content/?fr=product-resource-centers+data-mgmt+show-it+competition";
 compete_anchor.target = "_blank";
 // Now generate the contents of the cloud provider links paragraph
 var paragraph = document.getElementById("compete_links");
