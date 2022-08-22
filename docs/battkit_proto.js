@@ -173,7 +173,7 @@ function generateBattleKit() {
     // Create text and link to  competitor-related assets
     //
     // First, build the URL you want for Wordpress, based on checked items on the page
-    compete_url = "https://home.databricks.com/frc/battle-kit-compete-content/?fr=";
+    compete_url = "https://home.databricks.com/frc/battle-kit-compete-content/?fo=";
     // Loop through the compete div and examine each checkbox to see if it has been selected.
     // If selected, add the appropriate tag to the query string.
     checkboxes = $(".competeCkbox");
