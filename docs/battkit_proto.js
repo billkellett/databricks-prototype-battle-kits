@@ -136,7 +136,7 @@ function generateBattleKit() {
     // Create text and link to cloud provider-related assets
     //
     // First, build the URL you want for Wordpress, based on checked items on the page
-    cloud_url = "https://home.databricks.com/frc/battle-kit-cloud-provider-content/?fr=";
+    cloud_url = "https://home.databricks.com/frc/battle-kit-cloud-provider-content/?fo=";
     // Loop through the cloud div and examine each checkbox to see if it has been selected.
     // If selected, add the appropriate tag to the query string.
     checkboxes = $(".cloudCkbox");
